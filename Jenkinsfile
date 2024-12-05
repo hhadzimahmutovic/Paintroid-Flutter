@@ -18,6 +18,7 @@ pipeline {
         stage('Dependencies') {
             steps {
                 echo 'Running flutter pub get...'
+                sh 'git config --global --add safe.directory /usr/local/flutter'
                 sh 'flutter pub get'
             }
         }
