@@ -1,11 +1,11 @@
 pipeline {
     agent {
         docker {
-            image 'hhadzimahmutovic/playground:pantroid-flutter'
+            image 'hhadzimahmutovic/playground:pantroid-flutter.v2'
         }
     }
     environment {
-        FLUTTER_HOME = '/usr/local/flutter'
+        FLUTTER_HOME = 'home/usr/local/flutter'
         PATH = "${env.FLUTTER_HOME}/bin:${env.PATH}"
     }
     stages {
@@ -18,8 +18,6 @@ pipeline {
         stage('Dependencies') {
             steps {
                 echo 'Running flutter pub get...'
-                sh 'sudo chown -R $(whoami):$(whoami) /usr/local/flutter'
-                sh 'git config --global --add safe.directory /usr/local/flutter'
                 sh 'flutter pub get'
             }
         }
