@@ -18,25 +18,25 @@ pipeline {
         stage('Dependencies') {
             steps {
                 echo 'Running flutter pub get...'
-                sh 'flutter pub get'
+                sh 'home/usr/local/flutter/bin/flutter pub get'
             }
         }
         stage('Build') {
             steps {
                 echo 'Building the app...'
-                sh 'flutter build apk'
+                sh 'home/usr/local/flutter/bin/flutter build apk'
             }
         }
         stage('Unit Tests') {
             steps {
                 echo 'Running unit tests...'
-                sh 'flutter test test/unit'
+                sh 'home/usr/local/flutter/bin/flutter test test/unit'
             }
         }
         stage('UI Tests') {
             steps {
                 echo 'Running ui tests...'
-                sh 'flutter test test/widget'
+                sh 'home/usr/local/flutter/bin/flutter test test/widget'
             }
         }
         stage('Archive') {

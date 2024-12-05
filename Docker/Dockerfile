@@ -27,7 +27,7 @@ RUN git clone https://github.com/flutter/flutter.git home/usr/local/flutter \
     && home/usr/local/flutter/bin/flutter doctor
 
 # Add Flutter to PATH
-ENV PATH="home/usr/local/flutter/bin:home/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
+ENV PATH="home/usr/local/flutter/bin:${PATH}"
 
 # Pre-cache Flutter dependencies
 RUN flutter precache
