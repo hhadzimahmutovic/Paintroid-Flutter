@@ -9,7 +9,14 @@ class DockerParameters {
 }
 
 pipeline {
-    agent none
+    agent {
+        docker {
+            image d.image
+            args d.args
+            label d.label
+            alwaysPull true
+        }
+    }
 
     environment {
         FLUTTER_HOME = 'home/usr/local/flutter'
