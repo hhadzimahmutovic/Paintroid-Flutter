@@ -34,7 +34,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Checking out the code...'
+                sh """echo "Checking out the code..." """
                 checkout scm
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                 }
             }           
             steps {
-                echo 'Running flutter pub get...'
+                sh """ echo "Running flutter pub get..." """
                 sh 'flutter pub get'
             }
         }
@@ -62,7 +62,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Building the app...'
+                sh """ echo "Building the app..." """
                 sh 'flutter build apk'
             }
         }
@@ -76,7 +76,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Running unit tests...'
+                sh """echo "Running unit tests..." """
                 sh 'flutter test test/unit'
             }
         }
@@ -90,7 +90,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Running ui tests...'
+                sh """ echo "Running ui tests..." """
                 sh 'flutter test test/widget'
             }
         }
@@ -104,14 +104,14 @@ pipeline {
                 }
             }
             steps {
-                echo 'Archiving build artifacts...'
+                sh """ echo "Archiving build artifacts..." """
                 archiveArtifacts artifacts: 'build/app/outputs/flutter-apk/app-release.apk', allowEmptyArchive: true
             }
         }
     }
     post {
         always {
-            echo 'Cleaning up...'
+            sh """echo "Cleaning up..." """
             cleanWs()
         }
     }
