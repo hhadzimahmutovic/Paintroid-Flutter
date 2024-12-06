@@ -7,7 +7,7 @@ class DockerParameters {
     def label = 'LimitedEmulator'
     def image = 'hhadzimahmutovic/playground:pantroid-flutter.v2'
 }
-
+def d = new DockerParameters()
 pipeline {
     agent {
         docker {
