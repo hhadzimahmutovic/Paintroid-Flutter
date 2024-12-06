@@ -1,14 +1,29 @@
+class DockerParameters {
+    // 'docker build' would normally copy the whole build-dir to the container, changing the
+    // docker build directory avoids that overhead
+    def dir = 'docker'
+    def args = '--device /dev/kvm:/dev/kvm ' +
+            '-m=12G '
+    def label = 'LimitedEmulator'
+    def image = 'hhadzimahmutovic/playground:pantroid-flutter.v2'
+}
+
 pipeline {
-    agent {
-        docker {
-            image 'hhadzimahmutovic/playground:pantroid-flutter.v2'
-        }
-    }
+    agent none
+
     environment {
         FLUTTER_HOME = 'home/usr/local/flutter'
         PATH = "${env.FLUTTER_HOME}/bin:${env.PATH}"
     }
     stages {
+        agent {
+            docker {
+                image d.image
+                args d.args
+                label d.label
+                alwaysPull true
+            }
+        }
         stage('Checkout') {
             steps {
                 echo 'Checking out the code...'
@@ -18,25 +33,25 @@ pipeline {
         stage('Dependencies') {
             steps {
                 echo 'Running flutter pub get...'
-                sh 'home/usr/local/flutter/bin/flutter pub get'
+                sh 'flutter pub get'
             }
         }
         stage('Build') {
             steps {
                 echo 'Building the app...'
-                sh 'home/usr/local/flutter/bin/flutter build apk'
+                sh 'flutter build apk'
             }
         }
         stage('Unit Tests') {
             steps {
                 echo 'Running unit tests...'
-                sh 'home/usr/local/flutter/bin/flutter test test/unit'
+                sh 'flutter test test/unit'
             }
         }
         stage('UI Tests') {
             steps {
                 echo 'Running ui tests...'
-                sh 'home/usr/local/flutter/bin/flutter test test/widget'
+                sh 'flutter test test/widget'
             }
         }
         stage('Archive') {
