@@ -1,5 +1,5 @@
 # Base image
-FROM ubuntu:20.04
+FROM debian:bullseye
 
 ARG USER_ID=1000
 ARG USER_HOME=/home/usr
@@ -24,10 +24,10 @@ USER user
 
 # Install Flutter
 RUN git clone https://github.com/flutter/flutter.git home/usr/local/flutter \
-    && home/usr/local/flutter/bin/flutter doctor
+    && /home/usr/local/flutter/bin/flutter doctor
 
 # Add Flutter to PATH
-ENV PATH="home/usr/local/flutter/bin:${PATH}"
+ENV PATH="/home/usr/local/flutter/bin:${PATH}"
 
 # Pre-cache Flutter dependencies
 RUN flutter precache

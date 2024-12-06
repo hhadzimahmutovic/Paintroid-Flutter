@@ -5,7 +5,7 @@ class DockerParameters {
     def args = '--device /dev/kvm:/dev/kvm ' +
             '-m=12G '
     def label = 'LimitedEmulator'
-    def image = 'hhadzimahmutovic/playground:pantroid-flutter.v2'
+    def image = 'hhadzimahmutovic/playground:pantroid-flutter.v4'
 }
 def d = new DockerParameters()
 pipeline {
