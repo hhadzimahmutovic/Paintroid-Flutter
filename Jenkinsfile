@@ -20,7 +20,7 @@ pipeline {
     environment {
         FLUTTER_HOME = '/home/usr/local/flutter'
         ANDROID_HOME = '/home/usr/android/sdk'
-        PATH = "${env.FLUTTER_HOME}/bin:${env.PATH}"
+        PATH = "${FLUTTER_HOME}/bin:${PATH}:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools"
     }
     stages {
         
