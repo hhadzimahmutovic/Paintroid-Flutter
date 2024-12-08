@@ -33,13 +33,13 @@ pipeline {
         stage('Dependencies') {
             steps {
                 sh """ echo "Running flutter pub get..." """
-                sh 'flutter clean'
                 sh 'flutter pub get'
             }
         }
         stage('Build') {
             steps {
                 sh """ echo "Building the app..." """
+                sh 'flutter clean'
                 sh 'flutter build apk'
             }
         }
