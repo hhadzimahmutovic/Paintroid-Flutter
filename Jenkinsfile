@@ -33,6 +33,7 @@ pipeline {
         stage('Dependencies') {
             steps {
                 sh """ echo "Running flutter pub get..." """
+                sh 'flutter clean'
                 sh 'flutter pub get'
             }
         }
