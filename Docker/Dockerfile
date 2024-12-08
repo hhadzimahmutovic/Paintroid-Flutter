@@ -1,8 +1,8 @@
 # Base image
 FROM debian:bullseye
 
-ARG ANDROID_API_LEVEL=33
-ARG ANDROID_BUILD_TOOLS_LEVEL=33.0.2
+ARG ANDROID_API_LEVEL=34
+ARG ANDROID_BUILD_TOOLS_LEVEL=34.0.0
 ARG ANDROID_NDK_VERSION=25.2.9519653
 ARG ANDROID_CLI_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip"
 ARG SDKMANAGER_PACKAGES="build-tools;${ANDROID_BUILD_TOOLS_LEVEL} platforms;android-$ANDROID_API_LEVEL cmake;3.6.4111459 system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64 platform-tools"
