@@ -4,7 +4,7 @@ class DockerParameters {
     def dir = 'docker'
     def args = ''
     def label = 'LimitedEmulator'
-    def image = 'hhadzimahmutovic/playground:pantroid-flutter.v4'
+    def image = 'hhadzimahmutovic/playground:pantroid-flutter.v5'
 }
 def d = new DockerParameters()
 pipeline {
@@ -20,7 +20,7 @@ pipeline {
     environment {
         FLUTTER_HOME = '/home/usr/local/flutter'
         ANDROID_HOME = '/home/usr/android/sdk'
-        PATH = "${FLUTTER_HOME}/bin:${PATH}:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools"
+        PATH = "${env.FLUTTER_HOME}/bin:${env.PATH}"
     }
     stages {
         
