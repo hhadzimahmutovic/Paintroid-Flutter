@@ -33,6 +33,7 @@ pipeline {
         stage('Dependencies') {
             steps {
                 sh """ echo "Running flutter pub get..." """
+                sh 'flutter upgrade'
                 sh 'flutter downgrade 3.22.2'
                 sh 'flutter pub get'
                 sh 'flutter pub upgrade'
