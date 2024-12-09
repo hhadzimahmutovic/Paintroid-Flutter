@@ -34,6 +34,7 @@ pipeline {
             steps {
                 sh """ echo "Running flutter pub get..." """
                 sh 'flutter pub get'
+                sh 'flutter pub upgrade'
             }
         }
         stage('Build') {
