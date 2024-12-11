@@ -51,7 +51,7 @@ pipeline {
             }
         }
         stage('UI Tests') {
-            steps {
+            steps {cd ..
                 sh """ echo "Running ui tests..." """
                 sh 'flutter test test/widget'
             }
