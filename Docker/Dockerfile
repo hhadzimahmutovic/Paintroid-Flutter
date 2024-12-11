@@ -19,6 +19,8 @@ ENV ANDROID_HOME=$ANDROID_SDK_ROOT
 ENV PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 ARG _SDKMANAGER=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager
 
+ENV FLUTTER_VERSION=3.22.2
+
 
 # Install necessary tools
 RUN apt-get update && apt-get install -y \
@@ -72,6 +74,11 @@ RUN yes | $_SDKMANAGER --licenses
 
 # Install Flutter
 RUN git clone https://github.com/flutter/flutter.git home/usr/local/flutter \
+    && cd home \
+    && cd usr \
+    && cd local \
+    && cd flutter \
+    && git checkout $FLUTTER_VERSION \
     && /home/usr/local/flutter/bin/flutter doctor
 
 # Add Flutter to PATH
