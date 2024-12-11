@@ -31,6 +31,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     wget \
     libglu1-mesa \
+    libsqlite3-dev \
+    libsqlite3-0 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget -q https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb && \
